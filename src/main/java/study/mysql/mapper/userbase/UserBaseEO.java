@@ -1,4 +1,4 @@
-package study.mysql.mapper.user.userbase;
+package study.mysql.mapper.userbase;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,8 +15,6 @@ import java.util.Date;
 public class UserBaseEO extends BaseEO {
 
     private Long ubId;
-
-    private Long ubUserId;
 
     private String ubLoginName;
 

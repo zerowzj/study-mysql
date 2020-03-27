@@ -3,7 +3,7 @@ package study.mysql.service.user;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import study.mysql.mapper.user.userbase.UserBaseMapper;
+import study.mysql.mapper.userbase.UserBaseMapper;
 
 @Slf4j
 @Service("userService")

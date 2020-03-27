@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="study.mysql.mapper.user.userbase.UserBaseMapper">
-    <resultMap id="Base_Result_Map" type="UserBaseEO">
+<mapper namespace="study.mysql.mapper.userbase.UserBaseMapper">
+    <resultMap id="Base_Result_Map" type="OrderBaseEO">
         <result property="ubId" column="UB_ID"/>
         <result property="ubUserId" column="UB_USER_ID"/>
         <result property="ubLoginName" column="UB_LOGIN_NAME"/>
@@ -17,7 +17,7 @@
         UB.UB_BEGIN_TIME
     </sql>
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="ubId" parameterType="UserBaseEO">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="ubId" parameterType="OrderBaseEO">
         INSERT INTO USER_BASE (UB_USER_ID, UB_LOGIN_NAME, UB_LOGIN_PWD, UB_BEGIN_TIME)
         VALUES (#{ubUserId}, #{ubLoginName}, #{ubLoginPwd}, now())
         <selectKey keyProperty="ubId" resultType="java.lang.Long" order="AFTER">

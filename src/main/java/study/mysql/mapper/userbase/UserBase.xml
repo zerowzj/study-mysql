@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study.mysql.mapper.userbase.UserBaseMapper">
+    <resultMap id="Base_Result_Map" type="OrderBaseEO">
+        <result property="ubId" column="UB_ID"/>
+        <result property="ubUserId" column="UB_USER_ID"/>
+        <result property="ubLoginName" column="UB_LOGIN_NAME"/>
+        <result property="ubLoginPwd" column="UB_LOGIN_PWD"/>
+        <result property="ubBeginTime" column="UB_BEGIN_TIME"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        UB.UB_ID,
+        UB.UB_USER_ID,
+        UB.UB_LOGIN_NAME,
+        UB.UB_LOGIN_PWD,
+        UB.UB_BEGIN_TIME
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="ubId" parameterType="OrderBaseEO">
+        INSERT INTO USER_BASE (UB_USER_ID, UB_LOGIN_NAME, UB_LOGIN_PWD, UB_BEGIN_TIME)
+        VALUES (#{ubUserId}, #{ubLoginName}, #{ubLoginPwd}, now())
+        <selectKey keyProperty="ubId" resultType="java.lang.Long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <select id="get" parameterType="java.lang.Long" resultMap="Base_Result_Map">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM USER_BASE UB
+        WHERE UB.UB_ID = #{ubId}
+    </select>
+    <select id="getUserBaseLt" parameterType="java.lang.Long" resultMap="Base_Result_Map">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM USER_BASE UB
+    </select>
+    <select id="getUserBasePageLt" parameterType="java.lang.Long" resultMap="Base_Result_Map">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM USER_BASE UB
+    </select>
+    <select id="getShardingUserBaseLt" resultMap="Base_Result_Map">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM USER_BASE UB
+        WHERE MOD(UB.UB_ID, #{total}) = #{index}
+    </select>
+</mapper>
