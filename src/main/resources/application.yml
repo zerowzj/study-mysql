@@ -1,0 +1,23 @@
+#
+logging:
+  config: classpath:logback.xml
+#
+spring:
+  application:
+    name: study-springboot-dao
+  main:
+    web-application-type: none
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/ds_ms
+      username: root
+      password: root
+#
+mybatis:
+  check-config-location: false
+  config-location: classpath:mybatis-cfg.xml
+  mapper-locations:
+    - study/springboot/dao/mapper/**/**.xml
+  type-aliases-package: study.springboot.dao.mapper
