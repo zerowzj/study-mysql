@@ -22,12 +22,7 @@
         </triggeringPolicy>
     </appender>
 
-    <!-- ==================== -->
-    <!-- 1.路径指的是mybatis对应的方法接口所在的包 -->
-    <!-- 2.默认情况下子logger会继承root的logger的appender，也就是说子logger会在root的logger的appender里输出 -->
-    <!-- 3.若是additivity设为true，则子logger不仅在自己的appender里输出，还会在root的logger的appender里输出 -->
-    <!-- ==================== -->
-    <logger name="study.springboot.dao.mapper" level="DEBUG" additivity="true">
+    <logger name="study.mysql.mapper" level="DEBUG" additivity="true">
         <appender-ref ref="SQL_FILE"/>
     </logger>
     <root level="INFO">

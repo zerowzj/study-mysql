@@ -4,7 +4,7 @@ logging:
 #
 spring:
   application:
-    name: study-springboot-dao
+    name: study-mysql
   main:
     web-application-type: none
   datasource:
@@ -19,5 +19,5 @@ mybatis:
   check-config-location: false
   config-location: classpath:mybatis-cfg.xml
   mapper-locations:
-    - study/springboot/dao/mapper/**/**.xml
-  type-aliases-package: study.springboot.dao.mapper
+    - study/mysql/mapper/**/**.xml
+  type-aliases-package: study.mysql.mapper
