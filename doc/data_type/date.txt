@@ -1,0 +1,5 @@
+
+
+select * from date_test where dt_date < '2020-11-05';
+select * from date_test where dt_create_time < '2020-11-05 23:59:59';
+select * from date_test where dt_timestamp < '2020-11-05';

@@ -1,2 +1,17 @@
+#
 set autocommit=off;
-begin;
+#
+show variables;
+show variables like 'autocommit';
+
+#查看正在锁的事务
+select * from information_schema.innodb_locks;
+#查看等待锁的事务
+select * from information_schema.innodb_lock_waits;
+
+#看哪些表锁到了
+show open tables where in_use > 0;
+#查看进程号
+show processlist;
+#删除事务
+kill trx_mysql_thread_id
