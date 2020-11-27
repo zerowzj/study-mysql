@@ -1,3 +1,6 @@
+#查看事务隔离级别
+select @@tx_isolation;
+
 #
 set autocommit=off;
 #
