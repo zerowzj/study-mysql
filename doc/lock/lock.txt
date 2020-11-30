@@ -1,6 +1,7 @@
 #查看事务隔离级别
 select @@tx_isolation;
 
+
 #
 set autocommit=off;
 #
@@ -8,7 +9,7 @@ show variables;
 show variables like 'autocommit';
 
 
-#查看正执行事务
+#查看正执行事务在
 select * from information_schema.innodb_trx;
 #查看正在锁的事务
 select * from information_schema.innodb_locks;
@@ -21,7 +22,6 @@ show open tables where in_use > 0;
 show processlist;
 #删除事务
 kill trx_mysql_thread_id
-
 
 
 InnoDB 给每一个事务生成一个唯一事务 ID 的方法称为生成快照，因此这种场景称为快照读。
