@@ -16,4 +16,4 @@ select * from isolation_test;
 
 
 【可重复读】
-【可重复读】
+【序列化】
