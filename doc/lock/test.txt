@@ -1,0 +1,40 @@
+【】
+-- name是索引，行锁
+set autocommit=off;
+begin;
+select * from lock_test where name='wzj' for update;
+
+-- 查询
+select * from lock_test where name='wzj' for update;
+select * from lock_test where name='wzhj' for update;
+-- 插入
+insert into lock_test(name, age, email, create_time) values('zero', 30, 'zero', now());
+-- 更新
+update lock_test set name= 'wzj' where name='wzj';
+update lock_test set name= 'wzhj' where name='wzhj';
+-- 删除
+delete lock_test where id=1000;
+
+
+【】
+-- email不是索引，表锁
+set autocommit = off;
+begin;
+select * from lock_test where email='wzj' for update;
+
+-- 阻塞（同记录）
+select * from lock_test where email='wzj' for update;
+-- 阻塞（不同记录）
+select * from lock_test where email='wzhj' for update;
+-- 阻塞
+insert into lock_test(name, age, email, create_time) values('zero', 30, 'zero', now());
+-- 阻塞（同记录）
+update lock_test set name= 'wzj' where name='wzj';
+-- 阻塞（不同记录）
+update lock_test set name= 'wzj' where name='wzj';
+
+【】
+update lock_test set name= 'wzj' where name='wzj';
+
+
+insert into lock_test(name, age, email, create_time) values('zero', 30, 'zero', now());

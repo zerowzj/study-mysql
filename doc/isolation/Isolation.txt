@@ -1,0 +1,19 @@
+-- 查看 mysql 事务隔离级别
+select @@transaction_isolation;
+-- 修改 mysql 事务隔离级别
+set global transaction_isolation ='read-uncommitted';
+set global transaction_isolation ='read-committed';
+set global transaction_isolation ='';
+set global transaction_isolation ='';
+
+【读未提交】【读已提交】
+-- 插入
+set autocommit=off;
+begin;
+insert into isolation_test(name, age) values('zero', 30);
+-- 删除
+select * from isolation_test;
+
+
+【可重复读】
+【可重复读】
